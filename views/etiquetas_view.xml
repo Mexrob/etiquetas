@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<odoo> 
+<!-- Comentario en la Views --> 
+     <record id="view_ej_etiquetas_form" model="ir.ui.view"> 
+        <field name="name">ej.etiquetas.form</field> 
+        <field name="model">ej.etiquetas</field> 
+        <field name="arch" type="xml"> 
+            <form string="Listado de Etiquetas"> 
+                <group> 
+                    <field name="patient_id"/>
+                    <field name="consultations_id"/>
+                    <field name="Fecha"/>
+                </group> 
+            </form> 
+        </field> 
+    </record> 
+     <record id="view_tree_etiquetas" model="ir.ui.view"> 
+        <field name="name">ej.etiquetas.tree</field> 
+        <field name="model">ej.etiquetas</field> 
+        <field name="arch" type="xml"> 
+           <tree> 
+                    <field name="patient_id"/>
+                    <field name="consultations_id"/>
+                    <field name="Fecha"/> 
+           </tree> 
+        </field> 
+    </record> 
+    <record model="ir.actions.act_window" id="act_ej_etiquetas"> 
+        <field name="name">etiquetas</field> 
+        <field name="res_model">ej.etiquetas</field> 
+        <field name="view_mode">tree,form</field> 
+        <field name="view_id"  ref="view_tree_etiquetas" /> 
+    </record> 
+<!--  Declaramos los menu --> 
+<menuitem id="ej_etiquetas_menu" name="Etiquetas" web_icon="stock,static/description/icon.png" sequence="10"/> 
+<menuitem id="submenu_ej_etiquetas_menu" name="Etiquetas" sequence="10" parent="ej_etiquetas_menu"/> 
+<menuitem id="submenu_ej_etiquetas_action" name="Etiquetas" sequence="10" parent="submenu_ej_etiquetas_menu" action="act_ej_etiquetas"/> 
+</odoo> 
